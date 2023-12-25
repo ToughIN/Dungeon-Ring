@@ -1,0 +1,65 @@
+# =============== #
+# Unity generated #
+# =============== #
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# ===================================== #
+# Rider / Visual Studio / MonoDevelop / VSCode #
+# ===================================== #
+.vs/
+.vscode/
+.idea/
+*.userprefs
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userosscache
+*.xap
+*.dll
+*.pdb
+*.pidb
+*.opendb
+*.VC.db
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ===================================== #
+# Builds output #
+# ===================================== #
+[Bb]in/
+[Oo]bj/
+.apk
+.unitypackage
+
+# ============ #
+# Misc #
+# ============ #
+# Add files and folders you want to ignore
+
+
+# Packed Addressables
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+
+# Temporary auto-generated Android Assets
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# My own arts storage directory
+/[Aa]ssets/[Uu]nusedArts/
