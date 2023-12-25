@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UI
+  m_EditorClassIdentifier: 
+  m_GroupName: UI
+  m_Data:
+    m_SerializedData: []
+  m_GUID: d955dc5537dcf5d4688821ce3303d179
+  m_SerializeEntries:
+  - m_GUID: a2393bfb24ec8814785d1db9fa1d4dc2
+    m_Address: Main_Canvas
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - Canvas
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 724c42d829c8a3f4d939eb43a57956aa
+    m_Address: Player_HUD_Canvas
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - Canvas
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b4b229e46d50560408acab4dd9cae057
+    m_Address: UI_Panel_LoadMenu
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - Panel
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 40ad36735b5247b4cb3711f557ec06cb
+    m_Address: Save_Slot_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - Controls
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d624ff7f2f6283e44adece97434003b5
+    m_Address: UI_Panel_MainMenu_BackGround
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - Panel
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8cbf8ad9b4362d40b4d0401af7d702f
+    m_Address: UI_Panel_MainMenu_Buttons
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - Panel
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71950b4252c1a2f4d9e9244ba54dab90
+    m_Address: UI_Panel_HUD_Basic
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - Panel
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e55d8329509c784fb35b275aa9989da
+    m_Address: Slot_Inventory
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - Controls
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f84f4cf0f475404c96d928a8d785ad2
+    m_Address: UI_Panel_HUD_Inventory
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - Panel
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 714d4999b518dac488ca2e7d687dcfcf, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c7ce970946bf1b548a7dddaf64855143, type: 2}
+    - {fileID: 11400000, guid: 205dd9f35ead4a74c95662e3ddd59f8d, type: 2}

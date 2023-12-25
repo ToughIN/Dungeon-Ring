@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c79b2c16c4e4cd2ab976839d88249b4, type: 3}
+  m_Name: Test_Consumable
+  m_EditorClassIdentifier: 
+  itemNme: Short Sword
+  itemIcon: {fileID: 21300000, guid: 3281c3006a1e0bc4cb5fb75f228d40c2, type: 3}
+  itemDescription: Test_Consumable
+  itemID: 1
+  addressablePath: Test_Consumable
+  itemType: 3
+  weaponModel: {fileID: 543188495672713097, guid: f92493ed7d6fbae4a85b4f1a49147acf, type: 3}
+  strengthREQ: 0
+  dexREQ: 0
+  intREQ: 0
+  faithREQ: 0
+  physicalDamage: 0
+  magicDamage: 0
+  fireDamage: 0
+  holyDamage: 0
+  lightningDamage: 0
+  poiseDamage: 10
+  light_Attack_01_Modifier: 1.1
+  light_Attack_02_Modifier: 1.2
+  heavy_Attack_01_Modifier: 1.5
+  charge_Attack_01_Modifier: 2
+  baseStaminaCost: 20
+  lightAttackStaminaCostMultiplier: 0.9
+  commonAttack: {fileID: 11400000, guid: 913d930c9b04488458a7f7b39649ea6e, type: 2}
+  heavyAttack: {fileID: 11400000, guid: 6699639d47ce8cb4e8bbef21af9a9a21, type: 2}
