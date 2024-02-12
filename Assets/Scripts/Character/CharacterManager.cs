@@ -10,6 +10,8 @@ public class CharacterManager : NetworkBehaviour
 {
     [Header("Status")]
     public NetworkVariable<bool> isDead=new NetworkVariable<bool>(false,NetworkVariableReadPermission.Everyone,NetworkVariableWritePermission.Owner);
+
+    public bool testIsOwner = true;
     
     [HideInInspector]public CharacterController characterController;
     [HideInInspector]public Animator animator;
@@ -21,12 +23,13 @@ public class CharacterManager : NetworkBehaviour
     [HideInInspector] public CharacterSoundFXManager characterSoundFXManager;
     [HideInInspector] public CharacterLocomotionManager characterLocomotionManager;
     
+    [Header("Character Group")]
+    public ECharacterGroup characterGroup;
+    
+    
     [Header("Flags")]
     public bool isPerformingAction=false;
-    public bool applyRootMotion = false;
-    public TriggerVariable<bool> isGrounded = new TriggerVariable<bool>(true);
-    public bool canRotate=true;
-    public bool canMove = true;
+    
 
     
     
@@ -52,11 +55,7 @@ public class CharacterManager : NetworkBehaviour
             SceneManager.sceneLoaded+= OnSceneLoaded;
         }
         
-        isGrounded.OnValueChange+=(b =>
-        {
-            animator.applyRootMotion = false;
-            animator.SetBool(GameStrings.VARIABLE_ANITAMOR_IsGrounded, b);
-        });
+        
     }
 
     public override void OnDestroy()
@@ -68,7 +67,8 @@ public class CharacterManager : NetworkBehaviour
     protected virtual void Update()
     {
         //If this character is being controlled from our side, then assign its network position the to the position of our transform
-        if (IsOwner)
+        // Debug.Log(transform.name+" "+IsOwner);
+        if (IsOwner||testIsOwner)
         {
             characterNetWorkManager.networkPosition.Value = transform.position;
             characterNetWorkManager.networkRotation.Value = transform.rotation;
@@ -86,6 +86,12 @@ public class CharacterManager : NetworkBehaviour
                 Time.deltaTime*characterNetWorkManager.networkRotationSmoothTime);
         }
     }
+
+    protected virtual void FixedUpdate()
+    {
+        // throw new NotImplementedException();
+    }
+
     protected virtual void LateUpdate()
     {
         
@@ -93,7 +99,10 @@ public class CharacterManager : NetworkBehaviour
     
     public override void OnNetworkSpawn()
     {
+        base.OnNetworkSpawn();
         
+        characterNetWorkManager.OnIsMovingChanged(false,characterNetWorkManager.isMoving.Value);
+        characterNetWorkManager.isMoving.OnValueChanged+= characterNetWorkManager.OnIsMovingChanged;
     } 
 
     public virtual IEnumerator ProcessDeathEvent(bool    manuallySelectDeathAnimation= false)

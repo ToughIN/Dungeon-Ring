@@ -1,3 +1,4 @@
+using System;
 using ToufFrame;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +11,11 @@ public class PlayerInputMgr : MonoSingletonBase<PlayerInputMgr>
     
     
     private PlayerControls _playerControls; 
+    
+    [Header("Test")]
+    // [SerializeField] public TriggerVariable<bool> testInstanceEnable = new TriggerVariable<bool>(true);
+
+    
     
     [Header("CAMERA MOVEMENT INPUT")]
     [SerializeField] private Vector2 cameraInput;
@@ -50,13 +56,18 @@ public class PlayerInputMgr : MonoSingletonBase<PlayerInputMgr>
     private void Start()
     {
         SceneManager.activeSceneChanged+=OnSceneChanged;
-
-        Instance.enabled = false;
+        
+        // Instance.enabled = false; 
         if (_playerControls != null)
         {
             _playerControls.Disable();
 
         }
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("OnDisable");
     }
 
     private void OnSceneChanged(Scene oldScene, Scene newScene)
@@ -90,7 +101,7 @@ public class PlayerInputMgr : MonoSingletonBase<PlayerInputMgr>
             _playerControls.PlayerAction.Dodge.performed += i => dodgeInput = true;
             _playerControls.PlayerAction.Sprint.performed += i => sprintInput = true;// HOLDING THE INPUT, SET THE INPUT TO TRUE
             _playerControls.PlayerAction.Sprint.canceled += i => sprintInput = false;// RELEASING THE INPUT, SET THE INPUT TO FALSE
-            _playerControls.PlayerAction.Jump.performed += i =>jumpInput = true;
+            _playerControls.PlayerAction.Jump.performed += i => jumpInput = true;
             _playerControls.PlayerAction.LockOn.performed += i => lockOn_Input = true;
             _playerControls.PlayerAction.SwitchRightWeapon.performed += i => switch_Right_Weapon_Input = true;
             _playerControls.PlayerAction.SwitchLeftWeapon.performed += i => switch_Left_Weapon_Input = true;
@@ -209,16 +220,16 @@ public class PlayerInputMgr : MonoSingletonBase<PlayerInputMgr>
     {
         if (player == null) return;
         if(player.playerNetworkManager==null)Debug.Log(" player.playerNetworkManager==null");
-        if (player.playerNetworkManager.isLockedOn.Value)
+        if (player.playerNetworkManager.isLockedOn.Value)//如果目前已经锁定目标
         {
-            if (player.playerCombatManager.currentTarget == null)return;
+            if (player.playerCombatManager.currentTarget == null)return;//如果当前目标为空，返回
 
-            if (player.playerCombatManager.currentTarget.isDead.Value)
+            if (player.playerCombatManager.currentTarget.isDead.Value)//如果当前目标已经死亡, 取消锁定
             {
                 player.playerNetworkManager.isLockedOn.Value = false;
             }
             
-            //ATTEMPT TO FIND NEW TARGET
+            //用携程开始锁定目标
 
             if (lockOnCoroutine != null)
             {
@@ -231,7 +242,7 @@ public class PlayerInputMgr : MonoSingletonBase<PlayerInputMgr>
         
         
         
-        if (lockOn_Input&&player.playerNetworkManager.isLockedOn.Value)
+        if (lockOn_Input&&player.playerNetworkManager.isLockedOn.Value)//如果按下锁定键，且已经锁定目标,取消锁定
         {
             lockOn_Input = false;
             PlayerCamera.Instance.ClearLockOnTargets();
@@ -239,7 +250,7 @@ public class PlayerInputMgr : MonoSingletonBase<PlayerInputMgr>
             return;
         }
 
-        if (lockOn_Input && !player.playerNetworkManager.isLockedOn.Value)
+        if (lockOn_Input && !player.playerNetworkManager.isLockedOn.Value)//如果按下锁定键，且没有锁定目标
         {
             lockOn_Input = false;
             

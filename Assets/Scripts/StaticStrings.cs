@@ -33,6 +33,10 @@ public static class GameStrings
     public static readonly string VARIABLE_ANIMATOR_IsChargingAttack = "IsChargingAttack";
     public static readonly string VARIABLE_ANITAMOR_IsGrounded = "IsGrounded";
     public static readonly string VARIABLE_ANIMATOR_InAirTimer = "InAirTimer";
+    public static readonly string VARIABLE_ANIMATOR_Vertical = "Vertical";
+    public static readonly string VARIABLE_ANIMATOR_Horizontal = "Horizontal";
+    
+    public static readonly string VARIABLE_ANIMATOR_IsMoving = "isMoving";
 
     #endregion
     

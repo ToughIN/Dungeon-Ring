@@ -95,7 +95,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     
     private void HandleGroundMovement()
     {
-        if(!player.canMove)
+        if(!player.playerLocomotionManager.canMove)
             return;
 
         
@@ -140,7 +140,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     private void HandleFreeFallMovement()
     {
-        if (!player.isGrounded.Value)
+        if (!player.playerLocomotionManager.isGrounded.Value)
         {
             Vector3 freeFallDirection;
 
@@ -159,7 +159,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     {
         if(player.isDead.Value)
             return;
-        if(!player.canRotate) 
+        if(!player.playerLocomotionManager.canRotate) 
             return;
         if (player.playerNetworkManager.isLockedOn.Value)
         {
@@ -288,17 +288,32 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     {
         // IF WE ARE PERFORMING A GENERAL, WE DO NOT WANT TO ALLOW A JUMP (TODO: CHANGE WHEN COMBAT IS ADDED)
         if (player.isPerformingAction)
+        {
+            Debug.Log("isPerformingAction");
             return;
+        }
+
         // IF WE AREA OUT OF STAMINA, WE DO NOT WISH TO ALLOW A JUMP
-        if(player.playerNetworkManager.currentStamina.Value<=0)
+        if (player.playerNetworkManager.currentStamina.Value <= 0)
+        {
+            Debug.Log("currentStamina.Value <= 0");
             return;
+        }
+            
         
         // IF WE ARE ALREADY IN A JUMP, WE DO NOT WISH TO ALLOW A JUMP
-        if(player.playerNetworkManager.isJumping.Value)return;
+        if (player.playerNetworkManager.isJumping.Value)
+        {
+            Debug.Log("isJumping.Value");
+            return;
+        }
 
         // IF WE ARE NOT GROUNDED, WE DO NOT WISH TO ALLOW A JUMP
-        if (!player.isGrounded.Value)
+        if (!player.playerLocomotionManager.isGrounded.Value)
+        {
+            Debug.Log("!isGrounded.Value");
             return;
+        }
         
         // 双手武器单手武器跳跃动画不同 (TODO:)
         player.playerAnimatorManager.PlayTargetActionAnimation(GameStrings.ANIMATION_MAIN_JUMP_START_01,false);

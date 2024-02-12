@@ -18,7 +18,7 @@ public class PlayerAnimatorManager : CharacterAnimatorManager
 
     private void OnAnimatorMove()
     {
-        if (player.applyRootMotion)
+        if (player.playerAnimatorManager.applyRootMotion)
         {
             Vector3 velocity = player.animator.deltaPosition;
             player.characterController.Move(velocity);
@@ -39,6 +39,10 @@ public class PlayerAnimatorManager : CharacterAnimatorManager
         }
     }
 
+    public  void SetIsMoving()
+    {
+        player.animator.SetBool(GameStrings.VARIABLE_ANIMATOR_IsMoving, player.playerNetworkManager.isMoving.Value);
+    }
     public override void DisableCanDoCombo()
     {
         base.DisableCanDoCombo();

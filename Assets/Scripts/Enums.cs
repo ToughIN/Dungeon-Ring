@@ -1,8 +1,4 @@
-﻿public class Enums
-{
-        
-}
-
+﻿
 public enum ECharacterSlots
 {
     CharacterSlot1,
@@ -47,4 +43,11 @@ public enum EItemType
     // Ring,
     // Spell,
      None
+}
+
+
+public enum ECharacterGroup
+{
+    Team01,//friendly
+    Team02,//enemy
 }

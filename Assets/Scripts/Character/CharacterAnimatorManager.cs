@@ -11,6 +11,10 @@ public class CharacterAnimatorManager : MonoBehaviour
 
     private int vertical;
     private int horizontal;
+    
+    [Header("Flags")]
+    public bool applyRootMotion = false;
+
 
     [Header("Damage Animations")] 
     public string lastDamageAnimationPlayed;
@@ -26,8 +30,8 @@ public class CharacterAnimatorManager : MonoBehaviour
     {
         character = GetComponent<CharacterManager>();
 
-        vertical = Animator.StringToHash("Vertical");
-        horizontal = Animator.StringToHash("Horizontal");
+        vertical = Animator.StringToHash(GameStrings.VARIABLE_ANIMATOR_Vertical);
+        horizontal = Animator.StringToHash(GameStrings.VARIABLE_ANIMATOR_Horizontal);
     }
 
     protected virtual void Start()
@@ -115,15 +119,15 @@ public class CharacterAnimatorManager : MonoBehaviour
         bool canRotate=false,
         bool canMove=false)
     {
-        character.applyRootMotion = applyRootMotion;
+        character.characterAnimatorManager.applyRootMotion = applyRootMotion;
         character.animator.CrossFade(targetAnimation,0.2f);
         // CAN BE USED TO STOP CHARACTER FROM ATTEMPTING NEW ACTIONS
         // FOR EXAMPLE, IF YOU GET DAMAGED, AND BEGIN PERFORMING A DAMAGE ANIMATION
         // THI S FLAG WILL TURN TRUE IF YOU ARE STUNNED
         // WE CAN THEN CHECK FOR THIS BEFORE ATTEMPTING NEW ACTIONS
         character.isPerformingAction = isPerformingAction;
-        character.canRotate = canRotate;
-        character.canMove = canMove;
+        character.characterLocomotionManager.canRotate = canRotate;
+        character.characterLocomotionManager.canMove = canMove;
         
         // TELL THE SERVER/HOST WE PLAYED AN ANIMATION
         character.characterNetWorkManager.NotifyTheServerOfActionAnimationServerRPC(NetworkManager.Singleton.LocalClientId,targetAnimation,applyRootMotion);
@@ -145,11 +149,11 @@ public class CharacterAnimatorManager : MonoBehaviour
         
         character.characterCombatManager.currentAttackType = attackType;
         character.characterCombatManager.lastAttackAnimationPerformed = targetAnimation;
-        character.applyRootMotion = applyRootMotion;
+        character.characterAnimatorManager.applyRootMotion = applyRootMotion;
         character.animator.CrossFade(targetAnimation,0.2f);
         character.isPerformingAction = isPerformingAction;
-        character.canRotate = canRotate;
-        character.canMove = canMove;
+        character.characterLocomotionManager.canRotate = canRotate;
+        character.characterLocomotionManager.canMove = canMove;
         
         // TELL THE SERVER/HOST WE PLAYED AN ANIMATION
         character.characterNetWorkManager.NotifyTheServerOfAttackActionAnimationServerRPC(NetworkManager.Singleton.LocalClientId,targetAnimation,applyRootMotion);

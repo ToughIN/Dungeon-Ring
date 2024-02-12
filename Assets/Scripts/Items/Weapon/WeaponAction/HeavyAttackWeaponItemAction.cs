@@ -18,7 +18,7 @@ public class HeavyAttackWeaponItemAction : WeaponItemAction
             return;
         }
 
-        if (!playerPerformingAction.isGrounded .Value)
+        if (!playerPerformingAction.playerLocomotionManager.isGrounded .Value)
         {
             return;
         }

@@ -16,8 +16,8 @@ public class ResetActionFlag : StateMachineBehaviour
         //THIS CALLED WHEN AN ACTION ENDS, BECAUSE WE WILL SET EMPTY STATE
         character.isPerformingAction = false;
         character.animator.applyRootMotion = false;
-        character.canRotate = true;
-        character.canMove = true;
+        character.characterLocomotionManager.canRotate = true;
+        character.characterLocomotionManager.canMove = true;
         character.characterLocomotionManager.isRolling = false;
         character.characterAnimatorManager.DisableCanDoCombo();
         if (character.IsOwner)

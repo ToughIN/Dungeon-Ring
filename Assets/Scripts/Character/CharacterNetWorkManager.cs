@@ -14,12 +14,13 @@ public class CharacterNetWorkManager : NetworkBehaviour
 
     public Vector3 networkPositionVelocity = Vector3.zero;
     
-    public float networkPositionSmoothTime= 0.1f;
-    public float networkRotationSmoothTime= 0.1f;
+    public float networkPositionSmoothTime= 0.2f;
+    public float networkRotationSmoothTime= 0.2f;
 
     [Header("Target")] public NetworkVariable<ulong> currentTargetNetworkObjectID = new NetworkVariable<ulong>();
     
     [Header("Animator")]
+    public NetworkVariable<bool> isMoving=new NetworkVariable<bool>(false,NetworkVariableReadPermission.Everyone,NetworkVariableWritePermission.Owner);
     public NetworkVariable<float> horizontalMovement = new NetworkVariable<float>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     public NetworkVariable<float> verticalMovement = new NetworkVariable<float>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     public NetworkVariable<float> moveAmount = new NetworkVariable<float>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
@@ -62,6 +63,11 @@ public class CharacterNetWorkManager : NetworkBehaviour
         }
     }
 
+    public void OnIsMovingChanged(bool oldStatus, bool newStatus)
+    {
+        character.animator.SetBool(GameStrings.VARIABLE_ANIMATOR_IsMoving, isMoving.Value);
+    }
+    
     public void OnLockOnTargetIDChange(ulong oldID,ulong newID)
     {
         if (!IsOwner)
@@ -133,7 +139,7 @@ public class CharacterNetWorkManager : NetworkBehaviour
     
     private void PerformActionAnimationFromServer(string animationID, bool applyRootMotion)
     {
-        character.applyRootMotion=applyRootMotion;
+        character.characterAnimatorManager.applyRootMotion=applyRootMotion;
         character.animator.CrossFade(animationID,0.2f);
     }
     

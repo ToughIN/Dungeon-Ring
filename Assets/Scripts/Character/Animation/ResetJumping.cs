@@ -21,8 +21,8 @@ public class ResetJumping : StateMachineBehaviour
         //THIS CALLED WHEN AN ACTION ENDS, BECAUSE WE WILL SET EMPTY STATE
         character.isPerformingAction = false;
         character.animator.applyRootMotion = false;
-        character.canRotate = true;
-        character.canMove = true;
+        character.characterLocomotionManager.canRotate = true;
+        character.characterLocomotionManager.canMove = true;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
