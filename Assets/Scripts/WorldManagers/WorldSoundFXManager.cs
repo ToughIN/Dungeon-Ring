@@ -7,6 +7,7 @@ public class WorldSoundFXManager : MonoSingletonBase<WorldSoundFXManager>
 {
     [Header("Action Sounds")] 
     public AudioClip rollSFX;
+    
 
     [Header("Damage Sounds")]
     public AudioClip[] physicalDamageSFX;

@@ -8,7 +8,7 @@ public class WorldCharacterEffectsManager : MonoSingletonBase<WorldCharacterEffe
 {
     [SerializeField] private List<SO_InstantCharacterEffect> instantEffects;
 
-    [FormerlySerializedAs("soTakeDamageEffect")] [Header("Damage")] 
+    [Header("Damage")] 
     public SO_TakeDamageEffect takeDamageEffect;
     
     [Header("VFX")] 

@@ -20,7 +20,7 @@ public class CharacterCombatManager : NetworkBehaviour
     [FormerlySerializedAs("currentWeaponSoUsed")] [FormerlySerializedAs("currentWeaponUsed")] public SO_WeaponSoItem currentSoWeaponSoUsed;
     
     
-    [Header("Locked On Transform")]
+    [Header("Locked On Transform (Manual Binding PLZ)")]
     public Transform lockedOnTransform;
     
 

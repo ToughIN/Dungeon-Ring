@@ -10,7 +10,7 @@ public class PlayerInputMgr : MonoSingletonBase<PlayerInputMgr>
     public PlayerManager player;
     
     
-    private PlayerControls _playerControls; 
+    public PlayerControls _playerControls; 
     
     [Header("Test")]
     // [SerializeField] public TriggerVariable<bool> testInstanceEnable = new TriggerVariable<bool>(true);
@@ -58,11 +58,11 @@ public class PlayerInputMgr : MonoSingletonBase<PlayerInputMgr>
         SceneManager.activeSceneChanged+=OnSceneChanged;
         
         // Instance.enabled = false; 
-        if (_playerControls != null)
-        {
-            _playerControls.Disable();
-
-        }
+        // if (_playerControls != null)
+        // {
+        //     _playerControls.Disable();
+        //
+        // }
     }
 
     private void OnDisable()
@@ -72,22 +72,22 @@ public class PlayerInputMgr : MonoSingletonBase<PlayerInputMgr>
 
     private void OnSceneChanged(Scene oldScene, Scene newScene)
     {
-        if (newScene.buildIndex == WorldSaveGameManager.Instance.GetWorldSceneIndex())
-        {
-            Instance.enabled = true;
-            if (_playerControls != null)
-            {
-                _playerControls.Enable();
-            }
-        }
-        else
-        {
-            Instance.enabled = false;
-            if (_playerControls != null)
-            {
-                _playerControls.Disable();
-            }
-        }
+        // if (newScene.buildIndex == WorldSaveGameManager.Instance.GetWorldSceneIndex())
+        // {
+        //     Instance.enabled = true;
+        //     if (_playerControls != null)
+        //     {
+        //         _playerControls.Enable();
+        //     }
+        // }
+        // else
+        // {
+        //     Instance.enabled = false;
+        //     if (_playerControls != null)
+        //     {
+        //         _playerControls.Disable();
+        //     }
+        // }
     }
 
     private void OnEnable()

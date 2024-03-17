@@ -4,10 +4,11 @@ using UnityEngine.Serialization;
 
 public class PlayerCombatManager : CharacterCombatManager
 {
+    
     private PlayerManager player;
     
-    [FormerlySerializedAs("currentWeaponSoBeingUsed")] [FormerlySerializedAs("currentWeaponBeingUsed")] public SO_WeaponSoItem currentSoWeaponSoBeingUsed;
-    
+    [Header("Player Manager")]
+    public SO_WeaponSoItem currentSoWeaponSoBeingUsed;
     public bool canComboWithMainHandWeapon = true;
 
     

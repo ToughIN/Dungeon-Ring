@@ -1,4 +1,5 @@
-﻿using Unity.Mathematics;
+﻿using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class AICharacterCombatManager : CharacterCombatManager
@@ -23,9 +24,12 @@ public class AICharacterCombatManager : CharacterCombatManager
     protected override void Awake()
     {
         base.Awake();
-        lockedOnTransform = GetComponentInChildren<LockOnTransform>().transform;
     }
-    
+
+    private void Start()
+    {
+    }
+
     public void FindATargetViaLineOfSight(AICharacterManager aiCharacter)
     {
         if(currentTarget != null)

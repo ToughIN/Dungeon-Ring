@@ -86,6 +86,7 @@ public class PlayerManager : CharacterManager
            
             
             // UPDATE UI STAT BARS WHEN A STAT CHANGES (HEALTH OR STAMINA)
+            
             playerNetworkManager.currentHealth.OnValueChanged+= PlayerHUDCanvas.uiPanelHudBasic.SetNewHealthValue;
             // playerNetworkManager.currentHealth.OnValueChanged+= playerStatsManager.ResetHealthRegenTimer;
             playerNetworkManager.currentStamina.OnValueChanged+= PlayerHUDCanvas.uiPanelHudBasic.SetNewStaminaValue;
