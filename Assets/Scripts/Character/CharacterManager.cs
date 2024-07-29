@@ -66,14 +66,12 @@ public class CharacterManager : NetworkBehaviour
 
     protected virtual void Update()
     {
-        //If this character is being controlled from our side, then assign its network position the to the position of our transform
-        // Debug.Log(transform.name+" "+IsOwner);
+        
         if (IsOwner||testIsOwner)
         {
             characterNetWorkManager.networkPosition.Value = transform.position;
             characterNetWorkManager.networkRotation.Value = transform.rotation;
         }
-        //If this character is being controlled from else where, then assigh its position here locally
         else
         {
             

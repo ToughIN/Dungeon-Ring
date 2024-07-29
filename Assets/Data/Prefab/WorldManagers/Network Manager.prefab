@@ -45,12 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593a2fe42fa9d37498c96f9a383b6521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RunInBackground: 1
-  LogLevel: 1
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 9154562243699455721}
-    PlayerPrefab: {fileID: 1019295739495847604, guid: d35f29cc829ea8c48ac1ffb8b5e3e767, type: 3}
+    PlayerPrefab: {fileID: 6582528790904900317, guid: 650db43a63d5cb44d978036004333825, type: 3}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: 12cb72b67b041c14080c903651dfb0e8, type: 2}
@@ -70,6 +68,8 @@ MonoBehaviour:
     SpawnTimeout: 1
     EnableNetworkLogs: 1
     OldPrefabList: []
+  RunInBackground: 1
+  LogLevel: 1
 --- !u!114 &9154562243699455721
 MonoBehaviour:
   m_ObjectHideFlags: 0

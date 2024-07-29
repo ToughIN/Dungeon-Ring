@@ -289,14 +289,14 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         // IF WE ARE PERFORMING A GENERAL, WE DO NOT WANT TO ALLOW A JUMP (TODO: CHANGE WHEN COMBAT IS ADDED)
         if (player.isPerformingAction)
         {
-            Debug.Log("isPerformingAction");
+            // Debug.Log("isPerformingAction");
             return;
         }
 
         // IF WE AREA OUT OF STAMINA, WE DO NOT WISH TO ALLOW A JUMP
         if (player.playerNetworkManager.currentStamina.Value <= 0)
         {
-            Debug.Log("currentStamina.Value <= 0");
+            // Debug.Log("currentStamina.Value <= 0");
             return;
         }
             
@@ -304,14 +304,14 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         // IF WE ARE ALREADY IN A JUMP, WE DO NOT WISH TO ALLOW A JUMP
         if (player.playerNetworkManager.isJumping.Value)
         {
-            Debug.Log("isJumping.Value");
+            // Debug.Log("isJumping.Value");
             return;
         }
 
         // IF WE ARE NOT GROUNDED, WE DO NOT WISH TO ALLOW A JUMP
         if (!player.playerLocomotionManager.isGrounded.Value)
         {
-            Debug.Log("!isGrounded.Value");
+            // Debug.Log("!isGrounded.Value");
             return;
         }
         

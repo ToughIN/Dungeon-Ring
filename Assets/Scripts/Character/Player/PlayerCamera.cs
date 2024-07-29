@@ -137,14 +137,17 @@ public class PlayerCamera : MonoSingletonBase<PlayerCamera>
         Vector3 direction = cameraObject.transform.position - cameraPivotTransform.position;
         direction.Normalize();
 
-        if (Physics.SphereCast(cameraPivotTransform.position, cameraCollisionRadius, direction, out hit,
-                Mathf.Abs(targetCameraZPosition), collideWithLayers))
-        {
-            if (hit.collider.CompareTag("Player")) return;
-            float distanceFromHitObject = Vector3.Distance(cameraPivotTransform.position, hit.point);
-            targetCameraZPosition = -(distanceFromHitObject - cameraCollisionRadius);
-        }
-
+        if (!Physics.SphereCast(cameraPivotTransform.position, cameraCollisionRadius, direction, out hit, Mathf.Abs(targetCameraZPosition), collideWithLayers))return;
+        
+        
+        if (hit.collider.CompareTag("Player")) return;
+        float distanceFromHitObject = Vector3.Distance(cameraPivotTransform.position, hit.point);
+        targetCameraZPosition = -(distanceFromHitObject - cameraCollisionRadius);
+        Debug.Log("camerapivot position: "+cameraPivotTransform.position+" hit point: "+hit.point);
+        Debug.Log("distance from hit object: " + distanceFromHitObject+" targetCameraZPosition: "+targetCameraZPosition);
+         
+        
+        
         if (MathF.Abs(targetCameraZPosition) < cameraCollisionRadius)
         {
             targetCameraZPosition = -cameraCollisionRadius;
