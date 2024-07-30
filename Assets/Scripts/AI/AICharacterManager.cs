@@ -68,8 +68,8 @@ public class AICharacterManager : CharacterManager
             currentState= nextState;
         }
         navmeshAgent.transform.localRotation = Quaternion.identity;
-        navmeshAgent.transform.localPosition = Vector3.zero;
-
+        // navmeshAgent.transform.localPosition = Vector3.zero;
+        
         if (aiCharacterCombatManager.currentTarget != null)//如果有目标，就设置目标方向和视角，AICharacterCombatManager
         {
             aiCharacterCombatManager.targetDirection =
@@ -78,12 +78,12 @@ public class AICharacterManager : CharacterManager
                 WorldUtilityManager.Instance.GetAngleOfTarget(transform, aiCharacterCombatManager.targetDirection);
             aiCharacterCombatManager.distanceFromTarget=Vector3.Distance(transform.position,aiCharacterCombatManager.currentTarget.transform.position);
         }
-
+        
         if (navmeshAgent.enabled)
         {
             Vector3 agentDestination = navmeshAgent.destination;
             float remainingDistance = navmeshAgent.remainingDistance;
-
+        
             if (remainingDistance > navmeshAgent.stoppingDistance)
             {
                 aiCharacterNetworkManager.isMoving.Value = true;
